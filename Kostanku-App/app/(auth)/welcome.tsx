@@ -20,7 +20,7 @@ const Welcome = () => {
             style={styles.loginButton}>
             <Typo fontWeight={'500'}>Sign in</Typo>
         </TouchableOpacity>
-        
+
         <Animated.Image
           entering = {FadeIn.duration(500)}
           source={require("@/assets/images/kostanku.png")}
@@ -63,7 +63,7 @@ const Welcome = () => {
               </Button>
             </Animated.View>
           </View>
-        </View>
+      </View>
     </ScreenWrapper>
   )
 };

@@ -16,8 +16,9 @@ import Button from '@/components/Button'
 import { useAuth } from '@/contexts/authContext'
 import { updateUser } from '@/services/userService'
 import { useRouter } from 'expo-router'
+import * as ImagePicker from 'expo-image-picker'
 
-const profileModal = () => {
+const ProfileModal = () => {
 
   const { user, updateUserData } = useAuth();
   const [userData, setUserData] = useState<UserDataType>({
@@ -31,6 +32,19 @@ const profileModal = () => {
       image: user?.image || null,
     });
   }, [user]);
+
+  const onPickImage = async () => {
+    let result = await ImagePicker.launchImageLibraryAsync({
+      mediaTypes: ['images'],
+      // allowsEditing: true,
+      aspect: [4, 3],
+      quality: 0.5,
+    });
+
+    if (!result.canceled) {
+      setUserData({ ...userData, image: result.assets[0] });
+    }
+  };
 
   const [loading, setLoading] = useState(false);
   const router = useRouter();
@@ -73,7 +87,7 @@ const profileModal = () => {
               transition={100}
             />
             
-            <TouchableOpacity style={styles.editIcon}>
+            <TouchableOpacity onPress={onPickImage} style={styles.editIcon}>
               <Icons.Pencil
                 size={verticalScale(20)}
                 color={colors.neutral800}
@@ -81,14 +95,15 @@ const profileModal = () => {
             </TouchableOpacity>
           </View>
 
-          <View style={styles.inputContainer}></View>
+          <View style={styles.inputContainer}>
           <Typo color={colors.neutral200}>Name</Typo>
           <Input
             placeholder='Name'
             value={userData.name}
             onChangeText={(value) => setUserData({ ...userData, name: value })}
             
-          />
+            />
+            </View>
         </ScrollView>
       </View>
       <View style={styles.footer}>
@@ -101,7 +116,7 @@ const profileModal = () => {
   )
 }
 
-export default profileModal
+export default ProfileModal
 
 const styles = StyleSheet.create({
   container: {

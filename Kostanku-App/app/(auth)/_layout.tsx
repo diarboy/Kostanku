@@ -10,6 +10,7 @@ export default function AuthLayout() {
         animation: 'fade',
         
       }}
-    />
+    >
+    </Stack>
   );
 }

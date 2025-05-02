@@ -163,12 +163,13 @@ export type ResponseType = {
 };
 
 export type WalletType = {
-  id: string;
+  id?: string;
   name: string;
   amount?: number;
   totalIncome?: number;
   totalExpenses?: number;
-  image?: any;
+  image: any;
   uid?: string;
   created?: Date;
+  imagePublicId?: string | null;
 };

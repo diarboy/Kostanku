@@ -14,8 +14,16 @@ const StackLayout = () => {
                 name="(modals)/profileModal"
                 options={{
                     presentation: 'modal',
+                    animation: 'slide_from_bottom',
                 }}
-        />
+            />
+            <Stack.Screen
+                name="(modals)/walletModal"
+                options={{
+                    presentation: 'modal',
+                    animation: 'slide_from_bottom',
+                }}
+            />
         </Stack>
     );
 };

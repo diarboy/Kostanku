@@ -35,6 +35,6 @@ const styles = StyleSheet.create({
         height: verticalScale(52),
         justifyContent: 'center',
         alignItems: 'center',
-        width: '100%'
+        // width: '100%'
     }
 })
